@@ -10,14 +10,16 @@
   --primary: #010409;
   --secundary: #161b22;
   --font-color: #ffffff;
-  --font-blur: #808080;
+  --font-blur: #8b949e;
+  --font-card: #c9d1d9;
   --dark-font-color: #353535;
-  --destaque-color: #4988d1;
+  --destaque-color: #58a6ff;
   --load-color: #9fc9f9;
   --mensage-color: #0d1117;
   --border-camp: #30363d;
   --card-color: #0d1117;
   --card-bord: #21262d;
+  --button-color: #363b42;
   --toast-color: #c1d7f0;
 }
 
