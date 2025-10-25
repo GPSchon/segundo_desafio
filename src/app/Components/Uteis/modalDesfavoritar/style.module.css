@@ -66,3 +66,21 @@
   padding: 12px 24px;
   border-radius: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .btmRow {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btmVoltar,
+  .btmConfirmar {
+    width: 100%;
+  }
+}

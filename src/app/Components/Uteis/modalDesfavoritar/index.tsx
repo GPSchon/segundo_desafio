@@ -3,6 +3,7 @@ import style from "./style.module.css";
 import { Dispatch, SetStateAction } from "react";
 import { userGitHub } from "@/app/Models/userGitHub";
 import { useFavoritos } from "../Context";
+import { toast } from "react-toastify";
 
 export type modalProps = {
   mostra: boolean;
@@ -30,6 +31,7 @@ export function ModalDesfavorite({
     removerFavorito(userName);
     setFavorito((prev) => (prev ? { ...prev, favorite: false } : null));
     fecharModal();
+    toast.success("Usuário removido dos favoritos.");
   }
 
   return (
