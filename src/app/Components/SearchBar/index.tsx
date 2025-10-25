@@ -1,5 +1,6 @@
 "use client";
 
+import { getGitHub } from "@/app/GitHubService";
 import style from "./style.module.css";
 import { CiSearch } from "react-icons/ci";
 
@@ -8,7 +9,8 @@ export function SearchBar() {
     const inputSearch = document.getElementById(
       "inputSearch"
     ) as HTMLInputElement;
-    console.log(inputSearch.value);
+    const perfilGit = getGitHub(inputSearch.value);
+    console.log(perfilGit);
   }
   return (
     <div className={style.barraSearch}>
