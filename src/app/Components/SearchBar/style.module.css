@@ -13,8 +13,16 @@
 }
 
 .inputSearch {
+  flex: 1;
   color: var(--font-blur);
   line-height: 20px;
   font-size: 14px;
   vertical-align: middle;
+}
+
+.inputSearch:active,
+.inputSearch:focus,
+.inputSearch:hover {
+  border: none;
+  outline: none;
 }
