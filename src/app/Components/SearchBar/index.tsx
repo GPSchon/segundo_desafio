@@ -3,15 +3,31 @@
 import { getGitHub } from "@/app/GitHubService";
 import style from "./style.module.css";
 import { CiSearch } from "react-icons/ci";
+import { Dispatch, SetStateAction } from "react";
+import { userGitHub } from "@/app/Models/userGitHub";
+import { useFavoritos } from "../Uteis/Context";
 
-export function SearchBar() {
-  function handleSearch() {
+type SearchBarProps = {
+  setUsuarioGit: Dispatch<SetStateAction<userGitHub | null>>;
+};
+
+export function SearchBar({ setUsuarioGit }: SearchBarProps) {
+  const { favoritos } = useFavoritos();
+
+  async function handleSearch() {
     const inputSearch = document.getElementById(
       "inputSearch"
     ) as HTMLInputElement;
-    const perfilGit = getGitHub(inputSearch.value);
-    console.log(perfilGit);
+    if (!inputSearch?.value) return;
+
+    const dados = await getGitHub(inputSearch.value);
+
+    const Favoritado = favoritos.some((u) => u.userName === dados.userName);
+    dados.favorite = Favoritado;
+
+    setUsuarioGit(dados);
   }
+
   return (
     <div className={style.barraSearch}>
       <input

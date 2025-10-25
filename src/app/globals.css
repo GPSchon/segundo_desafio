@@ -21,6 +21,7 @@
   --card-bord: #21262d;
   --button-color: #363b42;
   --toast-color: #c1d7f0;
+  --btm-message: #4988d1;
 }
 
 html,
@@ -45,6 +46,19 @@ main {
   width: none;
   padding: 40px 64px;
   gap: 48px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,38 +1,23 @@
+"use client";
+
+import { useState } from "react";
 import { Navbar } from "../Components/Navbar";
 import { Card } from "../Components/Card";
 import style from "./style.module.css";
+import { useFavoritos } from "../Components/Uteis/Context";
+import {
+  ModalDesfavorite,
+  modalProps,
+} from "../Components/Uteis/modalDesfavoritar";
 
 export default function Favoritos() {
-  const favoriteUsers = [
-    {
-      id: "1",
-      nome: "João Silva",
-      userName: "@joaosilva",
-      cargo: "Desenvolvedor",
-      favorite: true,
-    },
-    {
-      id: "2",
-      nome: "Maria Santos",
-      userName: "@mariasantos",
-      cargo: "Designer",
-      favorite: true,
-    },
-    {
-      id: "3",
-      nome: "Pedro Oliveira",
-      userName: "@pedrooliveira",
-      cargo: "Gerente",
-      favorite: true,
-    },
-    {
-      id: "4",
-      nome: "Ana Costa",
-      userName: "@anacosta",
-      cargo: "Analista",
-      favorite: true,
-    },
-  ];
+  const modalOculta: modalProps = {
+    mostra: false,
+    userName: "",
+  };
+
+  const [mostraModal, setMostrarModal] = useState<modalProps>(modalOculta);
+  const { favoritos } = useFavoritos();
 
   return (
     <main>
@@ -40,20 +25,30 @@ export default function Favoritos() {
       <section className={style.favoritesSection}>
         <div className={style.headerSection}>
           <h1>Meus Favoritos</h1>
-          <p>Total de favoritos: {favoriteUsers.length}</p>
+          <p>Total de favoritos: {favoritos.length}</p>
         </div>
 
         <div className={style.cardsContainer}>
-          {favoriteUsers.map((user) => (
+          {favoritos.map((user) => (
             <Card
-              key={user.id}
-              nome={user.nome}
-              userName={user.userName}
-              cargo={user.cargo}
-              favorite={user.favorite}
+              key={user.userName}
+              user={user}
+              setUser={() => {}}
+              setModal={setMostrarModal}
+              setFavorito={() => {}}
             />
           ))}
         </div>
+
+        {mostraModal.mostra && (
+          <div className="overlay">
+            <ModalDesfavorite
+              userName={mostraModal.userName}
+              setMostrarModal={setMostrarModal}
+              setFavorito={() => {}}
+            />
+          </div>
+        )}
       </section>
     </main>
   );
